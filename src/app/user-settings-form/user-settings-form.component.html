@@ -4,7 +4,10 @@
     <div class="form-group">
       <label for="name">Name</label>
       <input type="text" name="name" class="form-control" [(ngModel)]="userSettings.name" required
-       #propertyTest="ngModel">
+       #nameField="ngModel">
+       <div [hidden]="nameField.valid || nameField.untouched" class="alert alert-danger">
+         Enter a name
+       </div>
     </div>
     <h3>touch:{{propertyTest.touched}}</h3>
     <h3>Untouch:{{propertyTest.untouched}}</h3>
