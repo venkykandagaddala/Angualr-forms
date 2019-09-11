@@ -1,20 +1,16 @@
 <div class="container">
   <h2>User Settings</h2>
-  <form #form="ngForm" ngNativeValidate>
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)">
     <div class="form-group">
       <label for="name">Name</label>
-      <input type="text" name="name" class="form-control" [(ngModel)]="userSettings.name" required
-       #nameField="ngModel">
-       <div [hidden]="nameField.valid || nameField.untouched" class="alert alert-danger">
+      <input type="text" name="name" class="form-control" [(ngModel)]="userSettings.name"
+       required
+       #nameField="ngModel"
+       [class.field-error]="form.submitted && nameField.invalid">
+       <div [hidden]="!form.submitted || nameField.valid" class="alert alert-danger">
          Enter a name
        </div>
     </div>
-    <h3>touch:{{propertyTest.touched}}</h3>
-    <h3>Untouch:{{propertyTest.untouched}}</h3>
-    <h3>valid:{{propertyTest.valid}}</h3>
-    <h3>Invalid:{{propertyTest.valid}}</h3>
-    <h3>dirty:{{propertyTest.dirty}}</h3>
-    <h3>pristine:{{propertyTest.pristine}}</h3>
     <div class="form-check form-group">
       <input class="form-check-input" type="checkbox" value="" id="emailOffers" name="emailOffers" [(ngModel)]="userSettings.emailOffers">
       <label class="form-check-label" for="emailOffers">
