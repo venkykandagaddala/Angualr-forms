@@ -12,32 +12,52 @@
          Enter a name
        </div>
     </div>
+    <button type="button" class="btn btn-primary" name="singleModel"
+      [(ngModel)]="singleModel" btnCheckbox
+      btnCheckboxTrue="On" btnCheckboxFalse="Off">
+      {{singleModel}}
+    </button>
+
+    
     <div class="form-check form-group">
       <input class="form-check-input" type="checkbox" value="" id="emailOffers" name="emailOffers" [(ngModel)]="userSettings.emailOffers">
       <label class="form-check-label" for="emailOffers">
         Email Special Offers
       </label>
     </div>
-    <p>User Interface Style</p>
+    <div class="btn-group">
+        <label for="startDate">Start Date:</label>
+      <input type="text"
+           placeholder="Start Date"
+           class="form-control"
+           bsDatepicker
+           name="startDate" 
+           [(ngModel)]="startDate"
+           id="startDate">
+    </div>
+    <p>{{ startDate }}</p>
+
     <div class="form-group">
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="interfaceStyle" id="liteInterfaceStyle" value="Light" [(ngModel)]="userSettings.interfaceStyle">
-        <label class="form-check-label" for="liteInterfaceStyle">
-          Light
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="interfaceStyle" id="mediumInterfaceStyle" value="Medium" [(ngModel)]="userSettings.interfaceStyle">
-        <label class="form-check-label" for="mediumInterfaceStyle">
-          Medium
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="interfaceStyle" id="darkInterfaceStyle" value="Dark" [(ngModel)]="userSettings.interfaceStyle">
-        <label class="form-check-label" for="darkInterfaceStyle">
-          Dark
-        </label>
-      </div>
+        <label for="startDate">Start Time:</label>
+      <timepicker [(ngModel)]="startTime" name="startTime" id="startTime"></timepicker>
+    </div>
+    <p>{{ startTime }}</p>
+
+    <div class="form-group">
+      <rating [(ngModel)]="userRating" [max]="defaultRating" [readonly]="isReadonly"
+        name="userRating"
+        ></rating>
+    </div>
+    User Rating: {{ userRating }}
+
+    <p>User Interface Style</p>
+    <div class="btn-group">
+      <label class="btn btn-primary" [(ngModel)]="userSettings.interfaceStyle"
+        btnRadio="Light" tabindex="0" role="button" name="interfaceStyle">Light</label>
+      <label class="btn btn-primary" [(ngModel)]="userSettings.interfaceStyle"
+        btnRadio="Medium" tabindex="0" role="button" name="interfaceStyle">Medium</label>
+      <label class="btn btn-primary" [(ngModel)]="userSettings.interfaceStyle"
+        btnRadio="Dark" tabindex="0" role="button" name="interfaceStyle">Dark</label>
     </div>
     <div class="form-group">
       <label for="subscriptionType">Subsciption Type:</label>
