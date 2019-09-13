@@ -6,7 +6,8 @@
       <input type="text" name="name" class="form-control" [(ngModel)]="userSettings.name"
        required
        #nameField="ngModel"
-       [class.field-error]="form.submitted && nameField.invalid">
+       [class.field-error]="form.submitted && nameField.invalid"
+       (blur)="onBlur(nameField)">
        <div [hidden]="!form.submitted || nameField.valid" class="alert alert-danger">
          Enter a name
        </div>
